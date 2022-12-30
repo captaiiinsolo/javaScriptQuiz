@@ -9,32 +9,35 @@ function startQuiz() {
     console.log("Quiz has started!");
 }
 
-// Displays 60 second timer in the header
-function displayTimer() {
-    var seconds = 60;
-    var timer = document.getElementsByTagName("p")[0].innerHTML = "Seconds Remaining: " + seconds;
-}
+// Sets Quiz Timer Length in seconds
+var quizTime = document.getElementById("timer");
+var quizSeconds = 120;
 
-// Calls the displayTimer function so that the timer is shown in the pages header upon loading.
-displayTimer();
+// Calls on function to display time
+displayQuizTimer(quizSeconds)
 
-// Starts 60 second timer
+
+
+// Timer Countdown function
+var secondsLeft = quizSeconds;
+
 function startTimer() {
-
-    var quizTimeRemaining = document.querySelector("timer");
-    
-    var secondsLeft = 60;
-
     var quizTimer = setInterval(
         () => {
-            if (secondsLeft <= 0) {
+            secondsLeft--;
+            displayQuizTimer(secondsLeft);
+            // quizTime.innerHTML = `Time Remaining: 00:${secondsLeft}`;
+            if (secondsLeft <= 0 || secondsLeft < 1) {
                 clearInterval(quizTimer);
-                document.getElementById("timer").innerHTML = "Finished";
-            } else {
-                document.getElementById("timer").innerHTML = "Seconds Remaining: " + secondsLeft;
-            }
-            secondsLeft -= 1;
-        
+            } 
+            
     }, 1000);
+
 }
 
+// Displays quiz timer in min:sec format
+function displayQuizTimer(second) {
+    var min = Math.floor(second / 60);
+    var sec = Math.floor(second % 60);
+    quizTime.innerHTML = `${min < 10 ? '0': ''}${min}:${sec < 10 ? '0': ''}${sec}`;
+}
