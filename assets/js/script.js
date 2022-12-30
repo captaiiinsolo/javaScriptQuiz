@@ -5,14 +5,23 @@ var startQuizBtn = document.querySelector("#startQuiz");
 startQuizBtn.addEventListener("click", startQuiz);
 
 function startQuiz() {
-    timer();
+    startTimer();
     console.log("Quiz has started!");
 }
 
-// Creates 60 second timer in the header of index.html
-function timer() {
+// Displays 60 second timer in the header
+function displayTimer() {
+    var seconds = 60;
+    var timer = document.getElementsByTagName("p")[0].innerHTML = "Seconds Remaining: " + seconds;
+}
 
-    var quizTimeRemaining = document.querySelector("#timer");
+// Calls the displayTimer function so that the timer is shown in the pages header upon loading.
+displayTimer();
+
+// Starts 60 second timer
+function startTimer() {
+
+    var quizTimeRemaining = document.querySelector("timer");
     
     var secondsLeft = 60;
 
@@ -28,3 +37,4 @@ function timer() {
         
     }, 1000);
 }
+
