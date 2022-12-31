@@ -1,43 +1,122 @@
-// Targets the Start Quiz button in the index.html
-var startQuizBtn = document.querySelector("#startQuiz");
+var quizQuestions = [
+    {
+        questionNumb: 1,
+        question:"Is this question number 1?",
+        options: [{
+            a: 'no',
+            b: 'maybe',
+            c: 'yes',
+            d: 'idk',
+        }],
+        answer:"c"
+    },
 
-// Will run the startQuiz function below when the Start Quiz button is clicked by the user.
-startQuizBtn.addEventListener("click", startQuiz);
+    {
+        questionNumb: 2,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-function startQuiz() {
-    startTimer();
-    console.log("Quiz has started!");
-}
+    {
+        questionNumb: 3,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-// Sets Quiz Timer Length in seconds
-var quizTime = document.getElementById("timer");
-var quizSeconds = 120;
+    {
+        questionNumb: 4,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-// Calls on function to display time
-displayQuizTimer(quizSeconds)
+    {
+        questionNumb: 5,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
+    {
+        questionNumb: 6,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
+    {
+        questionNumb: 7,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-// Timer Countdown function
-var secondsLeft = quizSeconds;
+    {
+        questionNumb: 8,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-function startTimer() {
-    var quizTimer = setInterval(
-        () => {
-            secondsLeft--;
-            displayQuizTimer(secondsLeft);
-            // quizTime.innerHTML = `Time Remaining: 00:${secondsLeft}`;
-            if (secondsLeft <= 0 || secondsLeft < 1) {
-                clearInterval(quizTimer);
-            } 
-            
-    }, 1000);
+    {
+        questionNumb: 9,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-}
+    {
+        questionNumb: 10,
+        question:"",
+        options: [{
+            a: '',
+            b: '',
+            c: '',
+            d: '',
+        }],
+        answer:""
+    },
 
-// Displays quiz timer in min:sec format
-function displayQuizTimer(second) {
-    var min = Math.floor(second / 60);
-    var sec = Math.floor(second % 60);
-    quizTime.innerHTML = `${min < 10 ? '0': ''}${min}:${sec < 10 ? '0': ''}${sec}`;
-}
+];
