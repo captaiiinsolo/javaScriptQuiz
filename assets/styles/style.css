@@ -9,22 +9,20 @@
 
 header {
     display: flex;
-    padding: 20px;
+    padding: 25px;
     justify-content: space-between;
     text-align: center;
     align-content: center;
     align-items: center;
-    font-size: 1.125rem;
+    font-size: larger;
 }
 
 #highscores {
-    color: dodgerblue;
+    color: #1e90ff;
 }
 
 #timer {
-    color: indianred;
-    font-family: 'Source Code Pro', monospace;
-    font-weight: 500;
+    color: #cd5c5c;
 }
 
 main {
@@ -61,11 +59,16 @@ main {
     height: 50px;
     padding: 5px;
     border-radius: 5px;
-    border: 3px solid dodgerblue;
-    background-color: dodgerblue;
+    border: 3px solid #1e90ff;
+    background-color: #1e90ff;
     color: floralwhite;
     font-size: 1.25rem;
     
+}
+
+#startQuizButton:hover {
+    background-color: #57a657;
+    border: 3px solid #57a657;
 }
 
 footer {
