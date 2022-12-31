@@ -16,7 +16,7 @@ function startQuizTimer() {
     var timerInterval = setInterval(function() {
         timeRemaining--;
         quizTimer.textContent = "Time: " + timeRemaining;
-
+        
         if(timeRemaining === 0 || timeRemaining <=0) {
             clearInterval(timerInterval);
             quizTimer.textContent = "TIME'S UP!";
