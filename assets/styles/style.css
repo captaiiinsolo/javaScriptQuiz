@@ -14,6 +14,17 @@ header {
     text-align: center;
     align-content: center;
     align-items: center;
+    font-size: 1.125rem;
+}
+
+#highscores {
+    color: dodgerblue;
+}
+
+#timer {
+    color: indianred;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 500;
 }
 
 main {
