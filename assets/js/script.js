@@ -120,3 +120,20 @@ var quizQuestions = [
     },
 
 ];
+
+var score = 0;
+
+// Questions answered incorrectly will incur a 15sec deduction
+var penalty = 15;
+
+// Questions answered correctly will add 10sec to the timer
+var reward = 10;
+
+// Quiz timer is 25seconds per question
+var quizTimer = 250;
+
+// Targets the id=timer in html
+var timeRemaining = document.querySelector("#timer");
+
+// Adds Quiz Timer to heading section
+timeRemaining.textContent = "Time: " + quizTimer;
