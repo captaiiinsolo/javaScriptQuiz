@@ -62,7 +62,7 @@ main {
     border-radius: 5px;
     border: 3px solid #1e90ff;
     background-color: #1e90ff;
-    color: floralwhite;
+    color: #fffaf0;
     font-size: 1.25rem;
     
 }
@@ -71,6 +71,35 @@ main {
 #tryAgain:hover {
     background-color: #57a657;
     border: 3px solid #57a657;
+}
+
+#quizContainer {
+    border: 3px solid #1e90ff;
+    padding: 15px;
+}
+
+.questionTextContainer {
+    padding: 15px;
+}
+
+.questionOptions {
+    margin-top: 25px;
+    padding: 15px;
+}
+
+.questionOptions p {
+    margin-bottom: 20px;
+    background-color: #1e90ff;
+    color: #fffaf0;
+    border-radius: 5px;
+    padding: 15px;
+    transition: all .2s ease-in-out;
+    justify-content: center;
+}
+
+.questionOptions p:hover {
+    background-color: rgb(30, 144, 255, 0.75);
+    transform: scale(1.05); 
 }
 
 footer {

@@ -3,12 +3,15 @@ var startButton = document.querySelector("#startQuizButton");
 var tryAgainButton = document.querySelector("#tryAgain");
 var quizTimer = document.querySelector("#timer");
 var highscores = document.querySelector("#highscores");
-var quizSection = document.querySelector("#quizContainer");
 var quizTitle = document.querySelector(".quizTitle");
 var quizInstructions = document.querySelector(".quizInstructions");
-var questionNumber = document.querySelector(".questionNumber");
+var quizSection = document.querySelector("#quizContainer");
 var questionText = document.querySelector(".questionText");
 var questionOptions = document.querySelector(".questionOptions");
+var choiceA = document.querySelector(".choiceA");
+var choiceB = document.querySelector(".choiceB");
+var choiceC = document.querySelector(".choiceC");
+var choiceD = document.querySelector(".choiceD");
 
 // Global Variables
 var timeRemaining;
@@ -53,7 +56,7 @@ function startQuizTimer() {
 
 // Quiz Questions, Options, and Answers
 var quizQuestions = [
-    ["Question: 1" + "\n", 
+    ["1.)", 
     {"question": "Is this question 1?" + "\n",
         "options": ["a: Yes" + "\n", ["b: no" + "\n"], ["c: Idk" + "\n"], ["d: Maybe"]]
     }]
@@ -65,12 +68,6 @@ function hideTryAgain() {
 }
 
 
-function startQuiz() {
-    $(questionNumber).append(quizQuestions[0][0]);
-    $(questionText).append(quizQuestions[0][1].question);
-    $(questionOptions).append(quizQuestions[0][1].options[0] + quizQuestions[0][1].options[1] + quizQuestions[0][1].options[2] + quizQuestions[0][1].options[3]);
-
-}
 
 // Console log question title, question, and options
 console.log(quizQuestions[0][0]);
@@ -81,8 +78,11 @@ console.log(quizQuestions[0][1].options[0] + quizQuestions[0][1].options[1][0] +
 
 startButton.addEventListener("click", startQuizTimer);
 
-startButton.addEventListener("click", startQuiz);
-
+questionText.append(quizQuestions[0][0] + " " + quizQuestions[0][1].question);
+choiceA.append(quizQuestions[0][1].options[0]);
+choiceB.append(quizQuestions[0][1].options[1]);
+choiceC.append(quizQuestions[0][1].options[2]);
+choiceD.append(quizQuestions[0][1].options[3]);
 
 // Create function that builds homepage so quiz can be rerun from beginning upon clicking try again button
 window.onload = function buildPage() {
@@ -92,3 +92,5 @@ quizInstructions.textContent = "Try to answer the following JavaScript related q
 hideTryAgain();
 
 }
+
+window.onload;
