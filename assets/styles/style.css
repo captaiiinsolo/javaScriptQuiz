@@ -54,14 +54,27 @@ main {
     margin-top: 50px;
 }
 
-.button {
+#startQuizButton {
     margin: 5px;
     width: 125px;
     height: 50px;
     padding: 5px;
     border-radius: 5px;
-    border: 3px solid #1e90ff;
+    border-color: #1e90ff;
     background-color: #1e90ff;
+    color: #fffaf0;
+    font-size: 1.25rem;
+    
+}
+
+#tryAgain {
+    margin: 5px;
+    width: 125px;
+    height: 50px;
+    padding: 5px;
+    border-color: #cd5c5c;
+    border-radius: 5px;
+    background-color: #cd5c5c;
     color: #fffaf0;
     font-size: 1.25rem;
     
@@ -70,7 +83,7 @@ main {
 #startQuizButton:hover,
 #tryAgain:hover {
     background-color: #57a657;
-    border: 3px solid #57a657;
+    border-color: #57a657;
 }
 
 #quizContainer {
