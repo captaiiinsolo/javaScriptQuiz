@@ -101,10 +101,6 @@ function getQuestion() {
 
    getOptions();
 
-   for (var i = 0; i < quizQuestions[0].question.length; i++) {
-        
-   }
-
 }
 
 function getOptions() {
