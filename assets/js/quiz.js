@@ -8,74 +8,69 @@ var quizInstructions = document.querySelector(".quizInstructions");
 var quizSection = document.querySelector("#quizContainer");
 var questionText = document.querySelector(".questionText");
 var questionOptions = document.querySelector(".questionOptions");
-var choice0 = document.querySelector("#choice0");
-var choice1 = document.querySelector("#choice1");
-var choice2 = document.querySelector("#choice2");
-var choice3 = document.querySelector("#choice3");
+var allChoices = document.querySelector(".choice");
+var choiceA = document.querySelector("#choiceA");
+var choiceB = document.querySelector("#choiceB");
+var choiceC = document.querySelector("#choiceC");
+var choiceD = document.querySelector("#choiceD");
 
 // Global Variables
-var timeRemaining;
 var penalty;
 var reward;
 var timerInterval;
 var userScore;
 var userInitials;
 
-// Starts quiz timer
-function startQuizTimer() {
-        // Makes sure multiple instances are not allowed.
-        clearInterval(timerInterval); 
 
-        // Initial time for quiz. Increase start time by to account for delay in display.
-        timeRemaining = 6;
 
-        // Countdown interval function
-        timerInterval = setInterval(function() {
-        timeRemaining--;
-        quizTimer.textContent = "Time: " + timeRemaining;
-
-        // When timer ends 
-        if(timeRemaining === 0) {
-            clearInterval(timerInterval);
-            quizTimer.textContent = "TIME'S UP!";
-            tryAgainButton.style.visibility = "visible";
-            highscores.style.visibility = "visible";
-            
-        }
-    }, 1000 * 1);
-}
 
 // Quiz Questions, Options, and Answers
 var quizQuestions = [
     {
         question: "Is this question 1?",
-        choices: ["Yes", "No", "Maybe", "Nah"], 
-        answer: "Yes"
+        choiceA: "Yes",  
+        choiceB: "No", 
+        choiceC: "Maybe", 
+        choiceD: "Nah",
+        answer: "A"
     },
 
     {
         question: "Is this question 2?",
-        choices: ["Yes", "No", "Maybe", "Nah"], 
-        answer: "No"
+        choiceA: "No",  
+        choiceB: "Maybe", 
+        choiceC: "Yes", 
+        choiceD: "Nah",
+        answer: "C"
     },
 
     {
         question: "Is this question 3?",
-        choices: ["Maybe", "No", "Yes", "Nah"], 
-        answer: "Yes"
+        choiceA: "No",  
+        choiceB: "Maybe", 
+        choiceC: "Yes", 
+        choiceD: "Nah",
+        answer: "C"
     },
 
     {
         question: "Is this question 4?",
-        choices: ["Yes", "No", "Maybe", "Nah"], 
-        answer: "Yes"
+        choiceA: "No",  
+        choiceB: "Maybe", 
+        choiceC: "Yes", 
+        choiceD: "Nah",
+        answer: "C"
     },
 
     {
         question: "Is this question 5?",
-        choices: ["Nah", "No", "Maybe", "Yes"], 
-        answer: "Yes"
+        choiceA: "No",  
+        choiceB: "Maybe", 
+        choiceC: "Yes", 
+        choiceD: "Nah",
+        answer: "C"
     }
+
 ];
 
 window.onload = function() {
@@ -83,75 +78,63 @@ window.onload = function() {
     tryAgainButton.style.visibility = "hidden";
 }
 
-function startQuiz () {
+function startQuiz() {
     startQuizTimer();
 
     getQuestion();
 }
 
+var lastQuestion = quizQuestions.length - 1;
+var question = 0;
+var timeRemaining = 31;
+
 function getQuestion() {
-   var questionText = setInterval(function() {
+    var q = quizQuestions[question];
 
-    $(".questionText").append(quizQuestions[0].question);
-   }, 1000 * 1);
+    questionText.textContent = q.question;
+    choiceA.textContent = q.choiceA;
+    choiceB.textContent = q.choiceB;
+    choiceC.textContent = q.choiceC;
+    choiceD.textContent = q.choiceD;
+}
 
-   setTimeout(function() {
-    clearInterval(questionText)
-   }, 1000 * 1);
+// Starts quiz timer
+function startQuizTimer() {
+    // Makes sure multiple instances are not allowed.
+    clearInterval(timerInterval); 
 
-   getOptions();
+    // Initial time for quiz. Increase start time by to account for delay in display.
+    // timeRemaining = 6;
+
+    // Countdown interval function
+    timerInterval = setInterval(function() {
+    timeRemaining--;
+    quizTimer.textContent = "Time: " + timeRemaining;
+
+    // When timer ends 
+    if(timeRemaining === 0) {
+        clearInterval(timerInterval);
+        quizTimer.textContent = "TIME'S UP!";
+        tryAgainButton.style.visibility = "visible";
+        highscores.style.visibility = "visible";
+        
+    }
+}, 1000 * 1);
 
 }
 
-function getOptions() {
-    getOption0();
-    getOption1();
-    getOption2();
-    getOption3();
-}
+function checkAnswer(answer) {
+    if (answer == quizQuestions[question].answer) {
+        timeRemaining += 10;
+    } else {
+        timeRemaining -= 15;
+        
+    }
 
-function getOption0() {
-    var choice0 = setInterval(function() {
-
-        $("#choice0").append(quizQuestions[0].choices[0])
-    }, 1000 * 1);
-
-    setTimeout(function() {
-        clearInterval(choice0)
-       }, 1000 * 1);
-}
-
-function getOption1() {
-    var choice1 = setInterval(function() {
-
-        $("#choice1").append(quizQuestions[0].choices[1])
-    }, 1000 * 1);
-
-    setTimeout(function() {
-        clearInterval(choice1)
-       }, 1000 * 1);
-}
-
-function getOption2() {
-    var choice2 = setInterval(function() {
-
-        $("#choice2").append(quizQuestions[0].choices[2])
-    }, 1000 * 1);
-
-    setTimeout(function() {
-        clearInterval(choice2)
-       }, 1000 * 1);
-}
-
-function getOption3() {
-    var choice3 = setInterval(function() {
-
-        $("#choice3").append(quizQuestions[0].choices[3])
-    }, 1000 * 1);
-
-    setTimeout(function() {
-        clearInterval(choice3)
-       }, 1000 * 1);
+    if (question < lastQuestion) {
+        question++;
+        getQuestion();
+    }
 }
 
 
