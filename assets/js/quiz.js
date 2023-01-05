@@ -13,6 +13,7 @@ var choiceA = document.querySelector("#choiceA");
 var choiceB = document.querySelector("#choiceB");
 var choiceC = document.querySelector("#choiceC");
 var choiceD = document.querySelector("#choiceD");
+var userInput = document.get
 
 // Global Variables
 var penalty;
@@ -20,6 +21,7 @@ var reward;
 var timerInterval;
 var userScore;
 var userInitials;
+var timeRemaining;
 
 
 
@@ -86,7 +88,6 @@ function startQuiz() {
 
 var lastQuestion = quizQuestions.length - 1;
 var question = 0;
-var timeRemaining = 31;
 
 function getQuestion() {
     var q = quizQuestions[question];
@@ -103,8 +104,8 @@ function startQuizTimer() {
     // Makes sure multiple instances are not allowed.
     clearInterval(timerInterval); 
 
-    // Initial time for quiz. Increase start time by to account for delay in display.
-    // timeRemaining = 6;
+    // Starting count for timer
+    timeRemaining = 31;
 
     // Countdown interval function
     timerInterval = setInterval(function() {
@@ -112,28 +113,48 @@ function startQuizTimer() {
     quizTimer.textContent = "Time: " + timeRemaining;
 
     // When timer ends 
-    if(timeRemaining === 0) {
+    if(timeRemaining <= 0 || timerInterval === 0) {
         clearInterval(timerInterval);
         quizTimer.textContent = "TIME'S UP!";
         tryAgainButton.style.visibility = "visible";
         highscores.style.visibility = "visible";
+        quizTimeOut();
         
     }
-}, 1000 * 1);
 
+    }, 1000 * 1);
+
+}
+// When user finishes the quiz they will be prompted to enter their in order to save their score
+function enterName() {
+    clearInterval(timerInterval);
+    var username = prompt("Congrats on finishing the quiz! Please enter your name to save your score.");
+
+    if (username != null) {
+        window.location.href = "../pages/highscores.html";
+    } else {
+        window.location.href = "../../index.html";
+    }
+}
+
+function quizTimeOut() {
+    var studyMore = alert("You have answered incorrectly too many times or your time has run out!. Study more and try again soon!");
+
+    return;
 }
 
 function checkAnswer(answer) {
     if (answer == quizQuestions[question].answer) {
         timeRemaining += 10;
     } else {
-        timeRemaining -= 15;
-        
+        timeRemaining -=15;
     }
 
     if (question < lastQuestion) {
         question++;
         getQuestion();
+    } else {
+        enterName();
     }
 }
 
