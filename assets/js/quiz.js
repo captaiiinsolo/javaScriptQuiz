@@ -160,3 +160,7 @@ function checkAnswer(answer) {
 
 
 startQuiz();
+
+
+// Next to do items
+// change enterName from prompt to new page with form, add local storage feature, style high score page
