@@ -13,13 +13,14 @@ var choiceA = document.querySelector("#choiceA");
 var choiceB = document.querySelector("#choiceB");
 var choiceC = document.querySelector("#choiceC");
 var choiceD = document.querySelector("#choiceD");
+var highscoreList = document.querySelector(".highscoreList");
 var userInput = document.get
 
 // Global Variables
 var penalty;
 var reward;
 var timerInterval;
-var userScore;
+var userScore = [];
 var userInitials;
 var timeRemaining;
 
@@ -89,6 +90,7 @@ function startQuiz() {
 var lastQuestion = quizQuestions.length - 1;
 var question = 0;
 
+// Changes the text content of the questions and answers
 function getQuestion() {
     var q = quizQuestions[question];
 
@@ -118,7 +120,7 @@ function startQuizTimer() {
         quizTimer.textContent = "TIME'S UP!";
         tryAgainButton.style.visibility = "visible";
         highscores.style.visibility = "visible";
-        quizTimeOut();
+        gameOver();
         
     }
 
@@ -129,25 +131,41 @@ function startQuizTimer() {
 function enterName() {
     clearInterval(timerInterval);
     var username = prompt("Congrats on finishing the quiz! Please enter your name to save your score.");
+    // takes user to high score page after successful input
+    var scoreAndName = {
+        name: username,
+        score: timeRemaining
+    }
+    // Allows for score and name to be saved into an array for actual list
+    userScore.push(scoreAndName); 
 
     if (username != null) {
+        localStorage.setItem("userScore", JSON.stringify(userScore));
         window.location.href = "../pages/highscores.html";
     } else {
         window.location.href = "../../index.html";
     }
+    console.log(username);
+    console.log(timeRemaining);
 }
 
-function quizTimeOut() {
-    var studyMore = alert("You have answered incorrectly too many times or your time has run out!. Study more and try again soon!");
+// Alerts the player that the quiz is over
+function gameOver() {
+    var studyMore = alert("Your remaining time has reached 0!. Study more and try again soon.");
+
+    console.log(timeRemaining);
 
     return;
 }
 
+// Checks users answer against correct answer and either applies points or reducts points. 
+// If user answers all questions correctly the enterName function will excute.
 function checkAnswer(answer) {
     if (answer == quizQuestions[question].answer) {
         timeRemaining += 10;
     } else {
         timeRemaining -=15;
+        return;
     }
 
     if (question < lastQuestion) {
@@ -158,9 +176,24 @@ function checkAnswer(answer) {
     }
 }
 
+function storeNameandScore() {
+    var scores = JSON.parse(localStorage.getItem("userScore"));
+
+    for (var i = 0; i < scores.length; i++) {
+        var hsList = document.createElement("li");
+        hsList.setAttribute("class", "hsList");
+        hsList.textContent = scores[i].name + " " + scores[i].score;
+        highscoreList.appendChild(hsList);
+    }
+
+    console.log(scores);
+}
+
+storeNameandScore();
+
 
 startQuiz();
 
 
-// Next to do items
-// change enterName from prompt to new page with form, add local storage feature, style high score page
+// Issues:
+// Users can still answer questions after timer has run out.
