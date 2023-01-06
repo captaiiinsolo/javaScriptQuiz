@@ -176,17 +176,3 @@ function checkAnswer(answer) {
 }
 
 startQuiz();
-
-
-
-
-
-
-
-
-
-
-
-
-// Issues:
-// Users can still answer questions after timer has run out.

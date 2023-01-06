@@ -17,7 +17,7 @@ header {
     font-size: larger;
 }
 
-#highscores {
+#highscores, #quizHome {
     color: #1e90ff;
 }
 
@@ -123,4 +123,21 @@ footer {
 
 .copyright {
     text-align: center;
+}
+
+/* Highscores Page */
+
+#highscoreH1 {
+    font-size: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+    color: #cd5c5c;
+    margin-bottom: 3rem;;
+
+}
+
+.highscoreList li {
+    font-size: 1.25rem;
+    text-align: center;
+    text-transform: capitalize;
 }
