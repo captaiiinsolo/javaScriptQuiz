@@ -27,6 +27,7 @@ function storeNameandScore() {
     }
 
     console.log(scores);
+    console.log(hsList);
 }
 
 storeNameandScore();
