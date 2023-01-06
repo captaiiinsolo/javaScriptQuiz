@@ -14,7 +14,6 @@ var choiceB = document.querySelector("#choiceB");
 var choiceC = document.querySelector("#choiceC");
 var choiceD = document.querySelector("#choiceD");
 var highscoreList = document.querySelector(".highscoreList");
-var userInput = document.get
 
 // Global Variables
 var penalty;
@@ -176,23 +175,17 @@ function checkAnswer(answer) {
     }
 }
 
-function storeNameandScore() {
-    var scores = JSON.parse(localStorage.getItem("userScore"));
-
-    for (var i = 0; i < scores.length; i++) {
-        var hsList = document.createElement("li");
-        hsList.setAttribute("class", "hsList");
-        hsList.textContent = scores[i].name + " " + scores[i].score;
-        highscoreList.appendChild(hsList);
-    }
-
-    console.log(scores);
-}
-
-storeNameandScore();
-
-
 startQuiz();
+
+
+
+
+
+
+
+
+
+
 
 
 // Issues:
