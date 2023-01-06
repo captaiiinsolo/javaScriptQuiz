@@ -117,8 +117,6 @@ function startQuizTimer() {
     if(timeRemaining <= 0 || timerInterval === 0) {
         clearInterval(timerInterval);
         quizTimer.textContent = "TIME'S UP!";
-        tryAgainButton.style.visibility = "visible";
-        highscores.style.visibility = "visible";
         gameOver();
         
     }
@@ -153,8 +151,10 @@ function gameOver() {
     var studyMore = alert("Your remaining time has reached 0!. Study more and try again soon.");
 
     console.log(timeRemaining);
-
-    return;
+    
+    window.location.href = "../../index.html";
+    
+    
 }
 
 // Checks users answer against correct answer and either applies points or reducts points. 
