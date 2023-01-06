@@ -22,6 +22,7 @@ function storeNameandScore() {
         var hsList = document.createElement("li");
         hsList.setAttribute("class", "hsList");
         hsList.textContent = scores[i].name + " " + scores[i].score;
+        hsList.setAttribute("data-index", i);
         highscoreList.appendChild(hsList);
     }
 

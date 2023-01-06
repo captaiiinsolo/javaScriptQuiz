@@ -137,8 +137,8 @@ function enterName() {
     userScore.push(scoreAndName); 
 
     if (username != null) {
-        localStorage.setItem("userScore", JSON.stringify(userScore));
         window.location.href = "../pages/highscores.html";
+        localStorage.setItem("userScore", JSON.stringify(userScore));
     } else {
         window.location.href = "../../index.html";
     }
